@@ -1,0 +1,59 @@
+<!--<div id="updateForm" [ngStyle]="{'display':enableUpdate?'block':'none'}">-->
+<!--  <router-outlet name="update"></router-outlet>-->
+<!--</div>-->
+
+<!--{{userId}}-->
+
+<div [style.display]="!showAdd ? 'block' : 'none'">
+    <h2>
+      {{selectedVideo.title}}
+    </h2>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          {{selectedVideo.url}}
+        </div>
+        <div class="col-12">
+          <div id="videoContainer">
+              <iframe #vFrame id="videoContent" class="col-12 p-1"   [src]="safeUrl | safe"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        {{selectedVideo.description}}
+      </div>
+      <div class="col-12 justify-content-end" *ngIf="selectedVideo._id!='none'">
+<!--        <button type="button" class="btn btn-info" (click)="showUpdate()" [routerLink]="['./',{outlets:{update:['updateVideo']}}]">Update</button>-->
+        <button type="button" class="btn btn-danger" (click)="deleteVideo(selectedVideo)">Delete</button>
+      </div>
+    </div>
+
+</div>
+
+<form [style.display]="showAdd ? 'block' : 'none'" [formGroup]="form" (ngSubmit)="createVideo(form.value)" class="border border-black p-3 rounded">
+  <div class="mb-3">
+    <label for="videoUrl" class="form-label col-4">URL</label>
+    <input id="videoUrl" type="text" class="form-control col-auto" formControlName="videoUrl">
+    <div class="form-text">Must enter URL for video.</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="videoTitle" class="form-label">Title</label>
+    <input id="videoTitle" class="form-control" type="text" formControlName="videoTitle">
+    <div class="form-text">Must enter title for video.</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="videoDescription" class="form-label">Description</label>
+    <input id="videoDescription" type="text" class="form-control" formControlName="videoDescription">
+    <div class="form-text">Should enter description for video.</div>
+  </div>
+
+  <div class="mb-3">
+    <select class="form-select" formControlName="videoTopic">
+      <option *ngFor="let option of vOptions">{{option.topic}}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-secondary">OK</button>
+</form>

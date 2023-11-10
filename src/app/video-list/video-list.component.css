@@ -1,0 +1,10 @@
+#video_list{
+  list-style: none;
+}
+
+#video_list li{
+  cursor: pointer;
+}
+#video_list li:hover{
+  background-color: lightgray;
+}

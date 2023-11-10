@@ -1,0 +1,41 @@
+<div class="container-fluid h-100">
+  <div class="row">
+    <form [formGroup]="signupForm" (ngSubmit)="loginToVideos()" class="col-12 col-md-4 m-auto">
+      <div class="border border-black rounded">
+        <label class="form-label" for="account">Account</label>
+        <input class="form-control" id="account" type="text" formControlName="account" #account>
+        <div class="text-danger" *ngIf="signupForm.controls['account'].errors?.['minlength']">At least 6 characters.</div>
+        <div class="text-danger" *ngIf="signupForm.controls['account'].errors?.['required']">This filed is required.</div>
+        <div class="text-success" *ngIf="signupForm.controls['account'].valid">OK</div>
+      </div>
+      <div class="border border-black rounded">
+        <label for="password" class="form-label">Password</label>
+        <input class="form-control" id="password" type="password" formControlName="password">
+        <div class="text-danger" *ngIf="signupForm.controls['password'].errors?.['minlength']">At least 6 characters.</div>
+        <div class="text-danger" *ngIf="signupForm.controls['password'].errors?.['required']">This filed is required.</div>
+        <div class="text-success" *ngIf="signupForm.controls['password'].valid">OK</div>
+      </div>
+      <div class="border border-black rounded">
+        <label for="check" class="form-label">Check</label>
+        <input class="form-control" id="check" type="password" formControlName="check">
+        <div class="text-danger" *ngIf="signupForm.controls['check'].errors?.['minlength']">At least 6 characters.</div>
+        <div class="text-danger" *ngIf="signupForm.controls['check'].errors?.['required']">This filed is required.</div>
+        <div class="text-success" *ngIf="signupForm.controls['check'].valid">OK</div>
+      </div>
+
+      <div class="border border-black rounded">
+        <label for="username" class="form-label">User Name</label>
+        <input class="form-control" id="username" type="text" formControlName="username">
+        <div class="text-danger" *ngIf="signupForm.controls['username'].errors?.['minlength']">At least 6 characters.</div>
+        <div class="text-danger" *ngIf="signupForm.controls['username'].errors?.['required']">This filed is required.</div>
+        <div class="text-success" *ngIf="signupForm.controls['username'].valid">OK</div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <button class="btn btn-outline-info col-12 col-md-6" type="submit">OK</button>
+          <button class="btn btn-outline-danger col-12 col-md-6" (click)="goHome()"  type="button">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

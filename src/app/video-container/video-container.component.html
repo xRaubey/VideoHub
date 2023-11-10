@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center my-3 flex-nowrap">
+  <select class="form-select flex-shrink-1" (change)="showSelectedType()" [(ngModel)]="selectedOption">
+    <option *ngFor="let option of options">{{option.topic}}</option>
+  </select>
+  <button (click)="showAddVideo()" class="btn btn-outline-success w-25 m-1">New Video</button>
+  <button type="button" class="btn btn-info w-25 m-1" (click)="showUpdate()">Update</button>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12" [ngStyle]="{'display': enableUpdate&&selectedVideo._id!='none' ? 'block':'none'}">
+      <div>
+        id: {{selectedVideo._id}}
+      </div>
+      <div class="d-inline-flex">
+        <select class="form-select" #changeInfo>
+          <option selected>Title</option>
+          <option>URL</option>
+          <option>Description</option>
+        </select>
+        <input type="text" class="form-control" [(ngModel)]="changeContent" >
+        <button type="submit" class="btn btn-outline-info" (click)="updateVideo(changeInfo)">Done</button>
+      </div>
+    </div>
+    <app-video-detail (updateList)="getUpdatedVideos($event)" [vOptions]="options" [selectedOption]="selectedOption" [selectedVideo]="selectedVideo" [showAdd]="showAddVideoFlag" [userId]="userId" class="col-9 bg-light"></app-video-detail>
+    <app-video-list [videos]="videos"  (selectedVideo)="getSelectedVideo($event)"  class="col-3"></app-video-list>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<ng-container *ngIf="videos.length>0">
+  <ul id="video_list">
+    <li *ngFor="let video of videos " (click)="selectVideo(video)" class="m-1 border border-black rounded text-center">
+      {{video.title}}
+    </li>
+  </ul>
+</ng-container>
+<ng-container *ngIf="videos.length==0">
+  <div>No Videos</div>
+</ng-container>

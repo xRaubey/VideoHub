@@ -1,0 +1,21 @@
+<div class="container-fluid h-100">
+  <div class="row">
+    <form [formGroup]="loginForm" (ngSubmit)="loginToVideos()" class="col-12 col-md-4 m-auto">
+      <div class="border border-black rounded">
+        <label class="form-label" for="account">Account</label>
+        <input class="form-control" id="account" type="text" formControlName="account">
+      </div>
+      <div class="border border-black rounded">
+        <label for="password" class="form-label">Password</label>
+        <input class="form-control" id="password" type="password" formControlName="password">
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <button class="btn btn-outline-info col-12 col-md-6" type="submit">OK</button>
+          <button class="btn btn-outline-danger col-12 col-md-6" (click)="goHome()"  type="button">Cancel</button>
+        </div>
+      </div>
+    </form>
+    <div id="error">{{error}}</div>
+  </div>
+</div>

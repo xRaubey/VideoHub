@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand">Video Library</a>
+    <ul class="navbar-nav">
+      <li>
+        <a [routerLink]="['/welcome']" class="nav-link text-light">Welcome</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/videos" class="nav-link"> Videos</a>
+      </li>
+    </ul>
+
+    <div *ngIf="!account.isLoggedIn()" class="row w-25">
+      <button [routerLink]="['/signup']" class="btn btn-info text-light col-5 m-1">Sign Up</button>
+      <button [routerLink]="['/login']" class="btn btn-warning text-light col-5 m-1">Login</button>
+    </div>
+    <div *ngIf="account.isLoggedIn()" class="row w-25">
+      <div class="text-light col-5 p-1">{{username}}</div>
+      <button class="btn btn-danger text-light col-5 p-1" (click)="account.logOut()">Log Out</button>
+    </div>
+
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
